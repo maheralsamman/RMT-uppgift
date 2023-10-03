@@ -6,6 +6,7 @@ Marknad, Utveckling och Sälj. Det ska gå att spara fler olika budgetallokering
 ”rad” ska ges ett unikt nummer. Varje sparad rad ska sedan kunna visas i en lista. Vid behov
 ska en rad kunna editeras eller tas bort.
 <br />
+<br />
 Följande krav finns:<br />
 • Använd JS/TypeScript och valfritt ramverk.<br />
 • Inmatningen ska göras med <input type="range"> en för varje område: Marknad, Utveckling, Sälj.<br />
