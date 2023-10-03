@@ -7,6 +7,8 @@ interface BudgetAllocation {
   sell: number;
 }
 
+const budget: number = 1200000 ;
+
 const App: React.FC = () => {
   const [budgetAllocations, setBudgetAllocations] = useState<BudgetAllocation[]>([]);
   const [market, setMarket] = useState<number>(0);
@@ -33,7 +35,7 @@ const App: React.FC = () => {
   
   const allocateBudget = (): void => {
     const totalBudget: number = market + development + sell;
-    if (totalBudget === 1200000) {
+    if (totalBudget === budget) {
       const newAllocation: BudgetAllocation = {
         id: budgetAllocations.length === 0 ? 1 : budgetAllocations[budgetAllocations.length - 1].id + 1,
         market,
@@ -96,11 +98,12 @@ const App: React.FC = () => {
     return (
       <div className="container">
         <h1>RMT Budget Allokering</h1>
+        <p>Budgeten som ska allokeras är {budget.toLocaleString()}</p>
         <label>Marknad Avdelning Budget: {market}</label>
         <input
           type="range"
           min={0}
-          max={1200000}
+          max={budget}
           step={1000}
           value={market}
           onChange={(e) => setMarket(parseInt(e.target.value))}
@@ -111,7 +114,7 @@ const App: React.FC = () => {
         <input
           type="range"
           min={0}
-          max={1200000}
+          max={budget}
           step={1000}
           value={development}
           onChange={(e) => setDevelopment(parseInt(e.target.value))}
@@ -122,7 +125,7 @@ const App: React.FC = () => {
         <input
           type="range"
           min={0}
-          max={1200000}
+          max={budget}
           step={1000}
           value={sell}
           onChange={(e) => setSell(parseInt(e.target.value))}
