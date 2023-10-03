@@ -62,3 +62,11 @@ span {
 button:hover {
   background-color: #ee0034;
 }
+.minus {
+    color: red;
+    font-weight: bold;
+}
+.option {
+    float: right;
+    margin-top: -5px;
+}

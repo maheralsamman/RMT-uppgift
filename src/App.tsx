@@ -91,6 +91,7 @@ const App: React.FC = () => {
     setDevelopment(0);
     setSell(0);
   };
+  const leftOfBudget: number = budget - (market + development + sell);
 
   if (loading) {
     return <div>Loading...</div>
@@ -98,7 +99,7 @@ const App: React.FC = () => {
     return (
       <div className="container">
         <h1>RMT Budget Allokering</h1>
-        <p>Budgeten som ska allokeras är {budget.toLocaleString()}</p>
+        <p className={leftOfBudget < 0 ? "minus" : ""}>Budgeten som ska allokeras är {(leftOfBudget).toLocaleString()}</p>
         <label>Marknad Avdelning Budget: {market.toLocaleString()}</label>
         <input
           type="range"
@@ -143,9 +144,11 @@ const App: React.FC = () => {
             <li key={allocation.id}>
               ID: {allocation.id}, Marknad: {allocation.market}, Utveckling:{" "}
               {allocation.development}, Sälj: {allocation.sell}{" "}
-              <button onClick={() => editAllocation(allocation)}>Redigera</button>
-              <button onClick={() => deleteAllocation(allocation.id)}>Ta bort</button>
+              <button className="option" onClick={() => editAllocation(allocation)}>Redigera</button>
+              <button className="option" onClick={() => deleteAllocation(allocation.id)}>Ta bort</button>
+              <hr ></hr>
             </li>
+            
           ))}
         </ul>
       </div>
