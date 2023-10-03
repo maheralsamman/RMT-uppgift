@@ -7,7 +7,7 @@ interface BudgetAllocation {
   sell: number;
 }
 
-const budget: number = 1200000 ;
+const budget: number = 1100000 ;
 
 const App: React.FC = () => {
   const [budgetAllocations, setBudgetAllocations] = useState<BudgetAllocation[]>([]);
@@ -18,7 +18,7 @@ const App: React.FC = () => {
   const [edit, setEdit] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Load data from local storage on initial render
+  // Load data from local storage on initial render (if exists)
   useEffect(() => {
     const savedAllocations = JSON.parse(localStorage.getItem("budgetAllocations") || "[]");
     if(savedAllocations.length > 0) {
@@ -49,7 +49,7 @@ const App: React.FC = () => {
       setDevelopment(0);
       setSell(0);
     } else {
-      alert("Den totala allokerade summan ska vara 1 200 000.");
+      alert(`Den totala allokerade summan ska vara ${budget.toLocaleString()}.`);
     }
   };
 
@@ -144,11 +144,10 @@ const App: React.FC = () => {
             <li key={allocation.id}>
               ID: {allocation.id}, Marknad: {allocation.market}, Utveckling:{" "}
               {allocation.development}, Sälj: {allocation.sell}{" "}
-              <button className="option" onClick={() => editAllocation(allocation)}>Redigera</button>
-              <button className="option" onClick={() => deleteAllocation(allocation.id)}>Ta bort</button>
+              <button className="optionButton" onClick={() => editAllocation(allocation)}>Redigera</button>
+              <button className="optionButton" onClick={() => deleteAllocation(allocation.id)}>Ta bort</button>
               <hr ></hr>
             </li>
-            
           ))}
         </ul>
       </div>

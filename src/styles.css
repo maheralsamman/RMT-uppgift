@@ -13,7 +13,7 @@ body {
   background-color: #ffeddd;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -66,7 +66,7 @@ button:hover {
     color: red;
     font-weight: bold;
 }
-.option {
+.optionButton {
     float: right;
     margin-top: -5px;
 }
