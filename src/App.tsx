@@ -99,7 +99,7 @@ const App: React.FC = () => {
       <div className="container">
         <h1>RMT Budget Allokering</h1>
         <p>Budgeten som ska allokeras är {budget.toLocaleString()}</p>
-        <label>Marknad Avdelning Budget: {market}</label>
+        <label>Marknad Avdelning Budget: {market.toLocaleString()}</label>
         <input
           type="range"
           min={0}
@@ -110,7 +110,7 @@ const App: React.FC = () => {
         />
         <br />
 
-        <label>Utveckling Avdelning Budget: {development}</label>
+        <label>Utveckling Avdelning Budget: {development.toLocaleString()}</label>
         <input
           type="range"
           min={0}
@@ -121,7 +121,7 @@ const App: React.FC = () => {
         />
         <br />
 
-        <label>Sälj Avdelning Budget: {sell}</label>
+        <label>Sälj Avdelning Budget: {sell.toLocaleString()}</label>
         <input
           type="range"
           min={0}
