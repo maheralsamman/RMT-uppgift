@@ -7,7 +7,7 @@ interface BudgetAllocation {
   sell: number;
 }
 
-const budget: number = 1100000 ;
+const budget: number = 1200000 ;
 
 const App: React.FC = () => {
   const [budgetAllocations, setBudgetAllocations] = useState<BudgetAllocation[]>([]);
@@ -104,7 +104,7 @@ const App: React.FC = () => {
         <input
           type="range"
           min={0}
-          max={budget}
+          max={budget - (development + sell)}
           step={1000}
           value={market}
           onChange={(e) => setMarket(parseInt(e.target.value))}
@@ -115,7 +115,7 @@ const App: React.FC = () => {
         <input
           type="range"
           min={0}
-          max={budget}
+          max={budget - (market + sell)}
           step={1000}
           value={development}
           onChange={(e) => setDevelopment(parseInt(e.target.value))}
@@ -126,7 +126,7 @@ const App: React.FC = () => {
         <input
           type="range"
           min={0}
-          max={budget}
+          max={budget - (market + development)}
           step={1000}
           value={sell}
           onChange={(e) => setSell(parseInt(e.target.value))}
