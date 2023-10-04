@@ -32,7 +32,11 @@ const App: React.FC = () => {
     localStorage.setItem("budgetAllocations",JSON.stringify(budgetAllocations));
   }, [budgetAllocations]);
 
-  
+  const emptyValues = (): void  => {
+    setMarket(0);
+    setDevelopment(0);
+    setSell(0);
+  }
   const allocateBudget = (): void => {
     const totalBudget: number = market + development + sell;
     if (totalBudget === budget) {
@@ -45,9 +49,7 @@ const App: React.FC = () => {
       setBudgetAllocations([...budgetAllocations, newAllocation]);
 
       // Empty input values after allocation
-      setMarket(0);
-      setDevelopment(0);
-      setSell(0);
+      emptyValues()
     } else {
       alert(`Den totala allokerade summan ska vara ${budget.toLocaleString()}.`);
     }
@@ -77,9 +79,7 @@ const App: React.FC = () => {
       setBudgetAllocations(updatedAllocations);
     }
     setEdit(false);
-    setMarket(0);
-    setDevelopment(0);
-    setSell(0);
+    emptyValues()
   };
 
   const deleteAllocation = (id: number): void => {
@@ -87,9 +87,7 @@ const App: React.FC = () => {
     const updatedAllocations = budgetAllocations.filter(allocation => allocation.id !== id);
 
     setBudgetAllocations(updatedAllocations);
-    setMarket(0);
-    setDevelopment(0);
-    setSell(0);
+    emptyValues()
   };
   const leftOfBudget: number = budget - (market + development + sell);
 
